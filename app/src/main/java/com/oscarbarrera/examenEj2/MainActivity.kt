@@ -43,26 +43,19 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun SeleccionarColor() {
     val selectedColor = remember { mutableStateOf(Color.Gray) }
-
-    // Lista de colores disponibles
     val colors = listOf(Color.Red, Color.Green, Color.Blue, Color.Yellow, Color.Cyan)
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.padding(16.dp)
     ) {
-        // Componente hijo para mostrar la lista de colores
         ColorPicker(colors = colors, onColorSelected = { color ->
             selectedColor.value = color
         })
-
-        // Mostrar el color seleccionado
         Text(
             text = "Color Seleccionado",
             modifier = Modifier.padding(top = 16.dp)
         )
-
-        // Cuadro de color para mostrar el color seleccionado
         Text(
             text = "   ",
             modifier = Modifier
@@ -74,7 +67,6 @@ fun SeleccionarColor() {
 
 @Composable
 fun ColorPicker(colors: List<Color>, onColorSelected: (Color) -> Unit) {
-    // Fila para mostrar los colores
     LazyRow(
         modifier = Modifier.padding(top = 16.dp)
     ) {
@@ -84,7 +76,6 @@ fun ColorPicker(colors: List<Color>, onColorSelected: (Color) -> Unit) {
                 onClick = { onColorSelected(color) },
                 modifier = Modifier.padding(end = 8.dp)
             ) {
-                // Mostrar un pequeño cuadro de color para cada color disponible
                 Text(text = "   ", color = Color.White, modifier = Modifier.background(color))
             }
         }
